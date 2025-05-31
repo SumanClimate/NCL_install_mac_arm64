@@ -59,8 +59,8 @@ step 1: Download ncl_ncarg-6.6.2.tar.gz (https://www.earthsystemgrid.org/api/v1/
 step 2: cd ncl_ncarg-6.6.2/config\
     make -f Makefile.ini\
   ./ymake -config `pwd`\
-  It will shows “ymake: Unknown machine type” as the script doesn't recognise the system. You need to modify ymake to identify your system. Do the following:\
-  As the system is “Darwin” and “arm64”, so put the following:\
+  It will show “ymake: Unknown machine type” as the script doesn't recognise the system. You need to modify ymake to identify your system. Do the following:\
+  As the system is “Darwin” and “arm64”, so put the following into ymake:\
         case    arm64:\
             set model   = $mach\
             set arch    = $mach\
@@ -68,6 +68,7 @@ step 2: cd ncl_ncarg-6.6.2/config\
             set vendor  = Apple\
             breaksw\
   Add these lines in the ymake file at line 424-429. This “Darwin_arm64”, will be required to prepare the system file.\
+step 3: create a file Darwin_arm64. You can download it from here and edit based on your choice.\
 
 
 
