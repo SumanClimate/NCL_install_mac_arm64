@@ -183,6 +183,18 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
    Will be modified to\
         static NclQuark possibleDimNames[NUMPOSDIMNAMES];\
 The modifed NclGlobalVars.h, NclApi.c, NclHDF5.c, NclNewHDF5.c are available in the repository. Download and put at ni/src/ncl\
+Now you are all done. Just make Everything >& make-output & and tail -f make-output\
+It will take few minutes. After successfull completion, you will have a total of 59 executables including "ncl" too.\
+Now modify and add the follwing lines to your .bashrc file:
+export NCARG_ROOT=/Users/suman/ncl_ncarg-6.6.2
+export PATH=$NCARG_ROOT/bin:$PATH
+In addition .hluresfile file is provided in the repository as "hluresfile". Download and put as .hluresfile at your home directory\
+That's it. Enjoy now.
+
+References:
+1. https://github.com/NCAR/ncl/compare/NCAR:8f9e947...MicroTed:c4486cc
+2. https://www.ncl.ucar.edu/Download/build_from_src.shtml
+
 
      
 
