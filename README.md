@@ -77,11 +77,11 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      line no. 44 (meemd.o dpsort_large.o wrf_pw.o wrf_wind.o wrf_constants.o wrf_constants.mod) will be modified as:\
      meemd.o dpsort_large.o wrf_pw.o wrf_wind.o wrf_constants.o\
      (modified "yMakefile" is available in this repository as "ni_yMakefile", download and rename as "yMakefile" and put at ni/src/lib/nfpfort/)
-  3) vi ni/src/lib/hlu/Format.c
+  2) vi ni/src/lib/hlu/Format.c
     line no. 943 and 1286\
       int len1,len2,len3,len4; will be changed to long len1,len2,len3,len4;\
       (modified "Format.c" is available in this repository as "Format.c", download and put at ni/src/lib/hlu/)
-  4) vi ncarg2d/src/libncarg_gks/bwi/argb2ci.f
+  3) vi ncarg2d/src/libncarg_gks/bwi/argb2ci.f
      line 19-22 will be replaced as:\
         parameter (ARGBMASK = int(Z'40000000'))\
         parameter (RMASK     = int(Z'00FF0000'))\
@@ -91,6 +91,10 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
        r = (iand(index, RMASK) / int(Z'0000FFFF')) / 255.\
        g = (iand(index, GMASK) / int(Z'000000FF')) / 255.\
      (modified "argb2ci.f" is available in this repository as "argb2ci.f", download and put at ncarg2d/src/libncarg_gks/bwi/)
+  4) vi ncarg2d/src/libncarg/conpack/CodeIftran
+     line 9669 will be replaced as CBUF(1:lbuf)=' '\
+     and line 9791 will be replaced as CBUF(1:LBUF)='0'\
+     (modified "CodeIftran" is available in this repository as "CodeIftran", download and put at ncarg2d/src/libncarg/conpack/)
   6) 
 
 
