@@ -94,7 +94,7 @@ Build GRIB2 support (optional) into NCL (y): n\
 Enter local library search path(s): /opt/X11/lib /Users/suman/allinstall/lib /opt/homebrew/lib\
 Enter local include search path(s): /opt/X11/include /opt/X11/include/freetype2 /Users/suman/allinstall/include /opt/homebrew/include\
 Go back and make more changes or review? (n): n\
-Save current configuration ? (y): y\
+Save current configuration ? (y): y
 
 Next step is pretty simple: make Everything >& make-output & and tail -f make-output. Now if you do this without going further only 49 executables will be created and most importantly "ncl" will not be created. For a successfull installation, 59 executables need to be created. You need to do the following steps:
   1) vi ni/src/lib/nfpfort/yMakefile
