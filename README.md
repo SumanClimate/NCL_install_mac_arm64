@@ -108,7 +108,7 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
         EXCSRCS = bcopyswap.c logic32.c gsbytes.c\
         EXOBJS  = bcopyswap.o logic32.o gsbytes.o\
     (modified "yMakefile" is available in this repository as "common_yMakefile", download, rename and put at common/src/libncarg_c/)
-  7)  
+  6) After all 
 
 
 
