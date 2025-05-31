@@ -191,7 +191,7 @@ export PATH=$NCARG_ROOT/bin:$PATH
 In addition .hluresfile file is provided in the repository as "hluresfile". Download and put as .hluresfile at your home directory\
 That's it. Enjoy now.
 
-References:
+# References:
 1. https://github.com/NCAR/ncl/compare/NCAR:8f9e947...MicroTed:c4486cc
 2. https://www.ncl.ucar.edu/Download/build_from_src.shtml
 
