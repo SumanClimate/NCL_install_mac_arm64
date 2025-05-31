@@ -137,9 +137,10 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
         @$(CAT) Copyright\
      modify as:\
      all-local::
-  7) After all these above corrections and then:\
+  7) Now even after all these above corrections and then:\
         make Everything >& make-output & and tail -f make-output\
      will install 57 executables and importantly, ncl is not installed. make-output will show the following error:\
+     
      duplicate symbol '_theoptr' in:\
         NclApi.o\
         guiFuncs.o\
@@ -155,6 +156,7 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      ld: 4 duplicate symbols for architecture arm64\
      collect2: error: ld returned 1 exit status\
      make[4]: *** [ncl] Error 1\
+     
      Now few more files need to be modified.\
        a) vi ni/src/ncl/NclGlobalVars.h\
            int cmd_line = 0;\
