@@ -1,0 +1,57 @@
+/*
+ *	Description:	This file contains the configuration for a
+ *                      gfortran/gcc build on a *64 bit* ARM (Apple Silicon) Mac system.
+ *
+ *                      You may need to modify it to change or include
+ *                      options.
+ *
+ *                       Note: if the build has trouble finding the
+ *                       "gfortran" library, then you may need to modify
+ *                       the "CtoFLibraries" line below and include a "-L"
+ *                       path to help it. For example:
+ *
+ *     #define CtoFLibraries  -L/usr/local/lib -lgfortran
+ *
+ *                       You'll need to change "/usr/local/lib" to
+ *                       whatever directory contains "libgfortran.so".
+ */
+#define DEBUG 1
+#define HdfDefines  -DDARWIN
+#define StdDefines  -DSYSV -D_POSIX_SOURCE -D_XOPEN_SOURCE -DByteSwapped -D__UNIXOS2__ -D_DARWIN_C_SOURCE
+#define ByteSwapped
+#define Cstatic 
+#define Cdynamic 
+#define CppCommand '/usr/bin/cpp -traditional'
+#define CCompiler   gcc
+#define CxxCompiler   g++
+#define FCompiler   gfortran
+#define CcOptions      -ansi -fPIC -Wall -std=c99 -Wno-error=implicit-function-declaration -O 
+#define FcOptions      -fPIC -fno-range-check -Wall -fallow-argument-mismatch -fallow-invalid-boz -O
+#define CtoFLibraries      -lgfortran -lquadmath
+#define CtoFLibrariesUser  -lgfortran -lquadmath
+#define XToolLibrary    -lXt -lSM -lICE
+#define BuildShared NO
+#define XLibrary -lXpm -lX11 -lXext
+
+#define LibSearchUser    -L/opt/X11/lib -L/Users/suman/allinstall/lib -L/opt/homebrew/lib
+#define IncSearchUser    -I/opt/X11/include -I/opt/X11/include/freetype2 -I/Users/suman/allinstall/include -I/opt/homebrew/include
+#define ExtraIncSearch   -I/opt/X11/include/freetype2 -I/Users/suman/allinstall/include -I/opt/homebrew/include
+
+#define ArchRecLibSearch    -L/opt/X11/lib -L/Users/suman/allinstall/lib -L/opt/homebrew/lib
+#define ArchRecIncSearch    -I/opt/X11/include -I/opt/X11/include/freetype2 -I/Users/suman/allinstall/include -I/opt/homebrew/include
+
+#define LexLibrary -ll
+
+FC = $(F77)
+
+/*************** Redefine Macros from Rules ********************************/
+
+/*
+ * Macro:	MakeDir
+ *
+ * Description:	This rule creates a directory - if a parent dir doesn't exist
+ *		it attempts to create it.
+ */
+#ifndef MakeDir
+#define MakeDir(dir)    @if (test ! -d dir); then ($(MKDIRHIER) dir); fi
+#endif
