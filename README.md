@@ -55,4 +55,19 @@ gcc version 13.2.0 (Homebrew GCC 13.2.0)
    h) export PATH=/usr/local/proj7/bin:$PATH and export DYLD_LIBRARY_PATH=/usr/local/proj7/lib:$DYLD_LIBRARY_PATH
 6. Also install libpng-1.6.48.tar.gz and jasper-2.0.10.tar.gz similarly.
 # Start installation
-step 1: Download ncl_ncarg-6.6.2.tar.gz
+step 1: Download ncl_ncarg-6.6.2.tar.gz (https://www.earthsystemgrid.org/api/v1/dataset/ncl.662.src/file/ncl_ncarg-6.6.2.tar.gz) and untar it.\
+step 2: cd ncl_ncarg-6.6.2/config\
+    make -f Makefile.ini\
+  ./ymake -config `pwd`\
+  It will shows “ymake: Unknown machine type” as the script doesn't recognise the system. You need to modify ymake to identify your system. Do the following:\
+  As the system is “Darwin” and “arm64”, so put the following:\
+        case    arm64:\
+            set model   = $mach\
+            set arch    = $mach\
+            set sysincs = Darwin_arm64\
+            set vendor  = Apple\
+            breaksw\
+  Add these lines in the ymake file at line 424-429. This “Darwin_arm64”, will be required to prepare the system file.\
+
+
+
