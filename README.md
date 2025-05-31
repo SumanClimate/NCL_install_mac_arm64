@@ -68,7 +68,8 @@ step 2: cd ncl_ncarg-6.6.2/config\
             set vendor  = Apple\
             breaksw\
   Add these lines in the ymake file at line 424-429. This “Darwin_arm64”, will be required to prepare the system file.\
-step 3: create a file Darwin_arm64. You can download it from here and edit based on your choice.\
+  (modified "ymake" file is available in this repository. Download and put at ncl_ncarg-6.6.2/config/)\
+step 3: create a file Darwin_arm64. Prepared "Darwin_arm64" is available in this repository. Just download it put at ncl_ncarg-6.6.2/config/.\
   then repeat step 2 and you will not see the "Unknown machine type" message. and the corresponding makefile will be created.
 step 4: cd ../\
 Now the code is ready to configure. during configuration step it will ask couple of queries and based on choice it will create/modify the makefile.\
@@ -95,7 +96,19 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      line 9669 will be replaced as CBUF(1:lbuf)=' '\
      and line 9791 will be replaced as CBUF(1:LBUF)='0'\
      (modified "CodeIftran" is available in this repository as "CodeIftran", download and put at ncarg2d/src/libncarg/conpack/)
-  5)  
+  5)  vi common/src/libncarg_c/yMakefile
+     add the following:\
+      a) after line 44\
+        #elif defined(Darwin) && defined(arm64) && defined(__LP64__)\
+        EXCSRCS = bcopyswap.c logic32.c\
+        EXFSRCS = gbytes.f sbytes.f\
+        EXOBJS  = sbytes.o gbytes.o bcopyswap.o logic32.o\
+     b) after line 53\
+        #elif defined(Darwin) && defined(arm64) && !defined(__LP64__)\
+        EXCSRCS = bcopyswap.c logic32.c gsbytes.c\
+        EXOBJS  = bcopyswap.o logic32.o gsbytes.o\
+    (modified "yMakefile" is available in this repository as "common_yMakefile", download, rename and put at common/src/libncarg_c/)
+  7)  
 
 
 
