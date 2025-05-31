@@ -91,11 +91,11 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
        r = (iand(index, RMASK) / int(Z'0000FFFF')) / 255.\
        g = (iand(index, GMASK) / int(Z'000000FF')) / 255.\
      (modified "argb2ci.f" is available in this repository as "argb2ci.f", download and put at ncarg2d/src/libncarg_gks/bwi/)
-  4) vi ncarg2d/src/libncarg/conpack/CodeIftran
+  4) vi ncarg2d/src/libncarg/conpack/CodeIftran\
      line 9669 will be replaced as CBUF(1:lbuf)=' '\
      and line 9791 will be replaced as CBUF(1:LBUF)='0'\
      (modified "CodeIftran" is available in this repository as "CodeIftran", download and put at ncarg2d/src/libncarg/conpack/)
-  6) 
+  5)  
 
 
 
