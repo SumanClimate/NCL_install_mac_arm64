@@ -73,6 +73,29 @@ step 3: create a file Darwin_arm64. Prepared "Darwin_arm64" is available in this
   then repeat step 2 and you will not see the "Unknown machine type" message. and the corresponding makefile will be created.
 step 4: cd ../\
 Now the code is ready to configure. during configuration step it will ask couple of queries and based on choice it will create/modify the makefile.\
+$./Configure -v\
+Build NCL (y)? Y\
+Parent installation directory : /Users/suman/ncl_ncarg-6.6.2\
+System temp space directory   : /tmp\
+Build NetCDF4 feature support (optional)? (y): y\
+Build HDF4 support (optional) into NCL? (y): n\
+Also build HDF4 support (optional) into raster library? (y): n\
+Build Triangle support (optional) into NCL (y): n\
+If you are using NetCDF V4.x, did you enable NetCDF-4 support (y)?: y\
+Did you build NetCDF with OPeNDAP support (y)?: n\
+Build GDAL support (optional) into NCL? (n): n\
+Build EEMD support (optional) into NCL? (y): n\
+Build Udunits-2 support (optional) into NCL (y): y\
+Build Vis5d+ support (optional) into NCL (n): n\
+Build HDF-EOS2 support (optional) into NCL (y): n\
+Build HDF5 support (optional) into NCL (y): y\
+Build HDF-EOS5 support (optional) into NCL (y): n\
+Build GRIB2 support (optional) into NCL (y): n\
+Enter local library search path(s): /opt/X11/lib /Users/suman/allinstall/lib /opt/homebrew/lib\
+Enter local include search path(s): /opt/X11/include /opt/X11/include/freetype2 /Users/suman/allinstall/include /opt/homebrew/include\
+Go back and make more changes or review? (n): n\
+Save current configuration ? (y): y\
+
 Next step is pretty simple: make Everything >& make-output & and tail -f make-output. Now if you do this without going further only 49 executables will be created and most importantly "ncl" will not be created. For a successfull installation, 59 executables need to be created. You need to do the following steps:
   1) vi ni/src/lib/nfpfort/yMakefile
      line no. 44 (meemd.o dpsort_large.o wrf_pw.o wrf_wind.o wrf_constants.o wrf_constants.mod) will be modified as:\
@@ -108,7 +131,26 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
         EXCSRCS = bcopyswap.c logic32.c gsbytes.c\
         EXOBJS  = bcopyswap.o logic32.o gsbytes.o\
     (modified "yMakefile" is available in this repository as "common_yMakefile", download, rename and put at common/src/libncarg_c/)
-  6) After all 
+  6) After all these corrections and then:\
+        make Everything >& make-output & and tail -f make-output\
+     will install 57 executables.\
+     Importantly, ncl is not installed with the following error:\
+     duplicate symbol '_theoptr' in:\
+        NclApi.o\
+        guiFuncs.o\
+     duplicate symbol '_thefptr' in:\
+        NclApi.o\
+        guiFuncs.o\
+     duplicate symbol '_cmd_line' in:\
+        NclApi.o\
+        guiFuncs.o\
+     duplicate symbol '_possibleDimNames' in:\
+        NclNewHDF5.o\
+        NclHDF5.o\
+     ld: 4 duplicate symbols for architecture arm64\
+     collect2: error: ld returned 1 exit status\
+     make[4]: *** [ncl] Error 1\
+     
 
 
 
