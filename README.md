@@ -136,8 +136,8 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      all-local::\
         @$(CAT) Copyright\
      modify as:\
-     all-local::\
-  8) After all these above corrections and then:\
+     all-local::
+  7) After all these above corrections and then:\
         make Everything >& make-output & and tail -f make-output\
      will install 57 executables and importantly, ncl is not installed. make-output will show the following error:\
      duplicate symbol '_theoptr' in:\
@@ -155,8 +155,39 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      ld: 4 duplicate symbols for architecture arm64\
      collect2: error: ld returned 1 exit status\
      make[4]: *** [ncl] Error 1\
-     Now few more files need to be modified.
-       a) 
+     Now few more files need to be modified.\
+       a) vi ni/src/ncl/NclGlobalVars.h\
+           int cmd_line = 0;\
+           FILE *thefptr = NULL;\
+           FILE *theoptr = NULL;\
+     will be modified as:\
+           extern int  cmd_line;\
+           extern FILE *thefptr;\
+           extern FILE *theoptr;\
+     b) vi ni/src/ncl/NclApi.c\
+           FILE *thefptr;\
+           FILE *theoptr;\
+           int cmd_line;\
+	  Will be modified as:\
+           FILE *thefptr = NULL\
+           FILE *theoptr = NULL\
+           int cmd_line = 0;\
+     c) vi  ni/src/ncl/NclHDF5.c\
+        At line 243:\
+          NclQuark possibleDimNames[NUMPOSDIMNAMES];\
+   Will be modified to\
+          static NclQuark possibleDimNames[NUMPOSDIMNAMES];\
+     d) vi  ni/src/ncl/NclNewHDF5.c\
+      At line 85:\
+        NclQuark possibleDimNames[NUMPOSDIMNAMES];\
+   Will be modified to\
+        static NclQuark possibleDimNames[NUMPOSDIMNAMES];\
+     
+
+
+     
+
+     
      
 
 
