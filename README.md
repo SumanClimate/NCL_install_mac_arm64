@@ -131,10 +131,15 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
         EXCSRCS = bcopyswap.c logic32.c gsbytes.c\
         EXOBJS  = bcopyswap.o logic32.o gsbytes.o\
     (modified "yMakefile" is available in this repository as "common_yMakefile", download, rename and put at common/src/libncarg_c/)
-  6) After all these corrections and then:\
+  6) vi ncarview/src/bin/ictrans/yMakefile\
+     after line 42\
+     all-local::\
+        @$(CAT) Copyright\
+     modify as:\
+     all-local::\
+  8) After all these above corrections and then:\
         make Everything >& make-output & and tail -f make-output\
-     will install 57 executables.\
-     Importantly, ncl is not installed with the following error:\
+     will install 57 executables and importantly, ncl is not installed. make-output will show the following error:\
      duplicate symbol '_theoptr' in:\
         NclApi.o\
         guiFuncs.o\
@@ -150,6 +155,8 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
      ld: 4 duplicate symbols for architecture arm64\
      collect2: error: ld returned 1 exit status\
      make[4]: *** [ncl] Error 1\
+     Now few more files need to be modified.
+       a) 
      
 
 
