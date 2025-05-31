@@ -38,16 +38,16 @@ gcc version 13.2.0 (Homebrew GCC 13.2.0)
       export FFLAGS="-fallow-argument-mismatch"\
       export FCFLAGS="-fallow-argument-mismatch"\
       ./configure --prefix=/Users/sumanmaity/allinstall/; make; make install
-6. proj is an important software for NCL installation.
+5. proj is an important software for NCL installation.\
    a) download proj-7.2.1.tar.gz and untar it
    b) cd proj-7.2.1
    c) Make the following corrections:
          vi src/proj_json_streaming_writer.hpp
-         1. add #include <cstdint> after #include <vector> and #include <string>
-         2. modify line 42 and 43 as below:
-            typedef int64_t GIntBig;
-            typedef uint64_t GUInt64;
-         That's it.
+         c.1. add #include <cstdint> after #include <vector> and #include <string>
+         c.2. modify line 42 and 43 as below:
+            typedef int64_t GIntBig;\
+            typedef uint64_t GUInt64;\
+         That's it.\
    d) mkdir build && cd build
    e) cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/proj7
    f) make -j4
