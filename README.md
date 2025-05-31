@@ -69,6 +69,18 @@ step 2: cd ncl_ncarg-6.6.2/config\
             breaksw\
   Add these lines in the ymake file at line 424-429. This “Darwin_arm64”, will be required to prepare the system file.\
 step 3: create a file Darwin_arm64. You can download it from here and edit based on your choice.\
+  then repeat step 2 and you will not see the "Unknown machine type" message. and the corresponding makefile will be created.
+step 4: cd ../\
+Now the code is ready to configure. during configuration step it will ask couple of queries and based on choice it will create/modify the makefile.\
+Next step is pretty simple: make Everything >& make-output & and tail -f make-output. Now if you do this without going further only 49 executables will be created and most importantly "ncl" will not be created. For a successfull installation, 59 executables need to be created. You need to do the following steps:
+  1) vi ni/src/lib/nfpfort/yMakefile
+     line no. 44 (meemd.o dpsort_large.o wrf_pw.o wrf_wind.o wrf_constants.o wrf_constants.mod) will be modified as:\
+     meemd.o dpsort_large.o wrf_pw.o wrf_wind.o wrf_constants.o
+  2) vi ni/src/lib/hlu/Format.c
+    line no. 943 and 1286\
+      int len1,len2,len3,len4; will be changed to long len1,len2,len3,len4;
+  3) 
+
 
 
 
