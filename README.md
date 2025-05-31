@@ -21,12 +21,18 @@ gcc version 13.2.0 (Homebrew GCC 13.2.0)
 3. NCL version 6.6.2 will be considered here.
 4. Few software such as:\
   a) export CC=gcc FC=gfortran F77=gfortran f90=gfortran CXX=g++\
+
   b) zlib-1.2.11.tar (./configure --prefix=/Users/sumanmaity/allinstall; make; make install)\
+  
   c) szip-2.1.1.tar (./configure --prefix=/Users/sumanmaity/allinstall; make; make install)\
+  
   d) hdf5-1.10.7 (./configure --prefix=/Users/sumanmaity/allinstall --with-zlib=/Users/sumanmaity/allinstall --with-szlib=/Users/sumanmaity/allinstall --enable-fortran ; make; make           install).\
       --enable-fortran: by default it is not enabled and therefore hdf5.mod file in the include will not be created and later on fortran code using HDF5 will not be compiled. for             creating hdf5.mod, use --enable-fortran\
+      
  e) export CPPFLAGS="-I/Users/sumanmaity/allinstall/include" and export LDFLAGS="-L/Users/sumanmaity/allinstall/lib"\
+ 
  f) netcdf-c-4.5.0  (./configure --prefix=/Users/sumanmaity/allinstall; make; make install)\
+ 
  g) edit your .bashrc:
       export PATH=$PATH:/Users/sumanmaity/allinstall/bin in the .bashrc file
       source it.
