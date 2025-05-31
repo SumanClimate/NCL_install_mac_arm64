@@ -182,6 +182,8 @@ Next step is pretty simple: make Everything >& make-output & and tail -f make-ou
         NclQuark possibleDimNames[NUMPOSDIMNAMES];\
    Will be modified to\
         static NclQuark possibleDimNames[NUMPOSDIMNAMES];\
+The modifed NclGlobalVars.h, NclApi.c, NclHDF5.c, NclNewHDF5.c are available in the repository. Download and put at ni/src/ncl\
+
      
 
 
