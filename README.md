@@ -53,5 +53,6 @@ gcc version 13.2.0 (Homebrew GCC 13.2.0)
    f) make -j4\
    g) sudo make install\
    h) export PATH=/usr/local/proj7/bin:$PATH and export DYLD_LIBRARY_PATH=/usr/local/proj7/lib:$DYLD_LIBRARY_PATH
-8.
-9.   
+6. Also install libpng-1.6.48.tar.gz and jasper-2.0.10.tar.gz similarly.
+# Start installation
+step 1: Download ncl_ncarg-6.6.2.tar.gz
